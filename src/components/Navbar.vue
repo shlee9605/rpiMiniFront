@@ -1,7 +1,7 @@
 <template>
   <nav class="header">
     <div class="header-logo">
-      <router-link to="/">Home</router-link>
+      <router-link to="/" color="white">Home</router-link>
     </div>
     <div class="header-auth">
       <a href="" v-if="isAuth" @click.prevent="logout">Logout</a>
@@ -14,14 +14,22 @@
 import {setAuthInHeader} from '../api'
 
 export default {
+  data(){
+    return{
+      temp: ''
+    }
+  },
+
   computed: {
     isAuth() {
       return !!localStorage.getItem('token')
     }
   },
+
   methods: {
     logout() {
       delete localStorage.token
+      delete localStorage.user
       setAuthInHeader(null)
       this.$router.push('/login')
     }
@@ -31,16 +39,17 @@ export default {
 
 <style>
 .header {
-  flex: none;
-  background-color: rgba(0,0,0,.15);
-  height: 32px;
-  padding: 4px;
+  background-color:rgba(115, 212, 136, 0.92);
+  height: 70px;
+  padding: 2px;
+  justify-content: center;
 }
 .header a {
   display: block;
-  height: 30px;
+  /* height: 30px; */
   line-height: 30px;
-  text-decoration: none;
+  font: white;
+  margin-top: 10px;
   color: rgba(255,255,255,.5);
 }
 .header-logo {
