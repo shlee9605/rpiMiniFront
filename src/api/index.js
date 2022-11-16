@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from '../routes'
 
-const DOMAIN = 'http://localhost:8080'
+const DOMAIN = 'http://localhost:8080';
 const UNAUTHORIZED = 401
 const onUnauthorized = () => {
   router.push(`/login?rPath=${encodeURIComponent(location.pathname)}`)
@@ -34,12 +34,16 @@ export const profile = {
   fetchall() {
     return request('get', '/profile/read/all')
   },
-  updateid(){
-    return request('patch', '/profile/patch')
+  updateid(key, userid){
+    return request('patch', '/profile/patch', {key, userid})
   },
 }
 export const auth = {
   login(userid, password) {
     return request('post', '/login', {userid, password}) 
+  },
+  
+  signup(userid, password){
+    return request('post', '/join', {userid, password})
   }
 }

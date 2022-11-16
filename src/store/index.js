@@ -14,9 +14,7 @@ const store = new Vuex.Store({
     }
   },
   actions:{
-    ADD_BOARD(_, {title}){
-      return api.board.create(title)
-    }
+
   },
 })
 

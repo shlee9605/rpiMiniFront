@@ -3,7 +3,6 @@
     <Navbar /> 
 		<v-main class="mainBackground">
 			<router-view></router-view>
-			참참참
 		</v-main>
 	</v-app>
 </template>
