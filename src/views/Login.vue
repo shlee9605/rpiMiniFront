@@ -1,27 +1,43 @@
 <template>
   <div class="login">
-    <v-col cols="60" xs="60" sm="40" md="40" lg="40" class="ma-auto">
-    <h1>참참참 로그인하기</h1>
-    
-    <form @submit.prevent="onSubmit">
-      <div class = "innerDiv">
-        <label for="userid">Userid : </label>
-        <input class="form-control" type="text" name="userid" 
-          v-model="userid" autofocus placeholder="e.g., test@test.com" />
+    <div></div>
+    <div><h1>참참참 로그인하기</h1></div>
+      <div class="lineContainer">
+
+        <form @submit.prevent="onSubmit" >
+          <div class = "innerDiv">
+            <label for="userid">Userid : </label>
+            <v-text-field class="form-control" type="text" name="userid" 
+              v-model="userid" autofocus placeholder="e.g., test@test.com" />
+          </div>
+          <div class = "innerDiv">
+            <label for="password">Passwrod : </label>
+            <v-text-field  class="form-control" type="password" 
+              v-model="password" placeholder="123123" />
+          </div>
+          <div class = "innerDiv"></div>
+          <div class = "innerDiv2">
+            <div>
+            </div>
+            <div>
+            <button  class="btn" :class="{'btn-success': !invalidForm}" type="submit" 
+              :disabled="invalidForm"> Log In </button>
+            <button  class="btn" :class="{'btn-success': !invalidForm}" type="submit"
+              :disabled="invalidForm"> <router-link to="/signup"> signup</router-link> </button>
+            </div>
+
+          </div>
+        </form>
+        <div>
+            </div>
       </div>
-      
-      <div class = "innerDiv">
-        <label for="password">Passwrod : </label>
-        <input class="form-control" type="password" 
-          v-model="password" placeholder="123123" />
-      </div>
-      <div class = "innerDiv">
-      <button  class="btn" :class="{'btn-success': !invalidForm}" type="submit" 
-        :disabled="invalidForm"> Log In </button>
-      </div>
-    </form>
-    <p class="error" v-if="error">{{error}}</p>
-    </v-col>
+
+      <p class="error" v-if="error">{{error}}</p>
+    <!-- </v-col> -->
+
+    <div>
+    </div>
+
   </div>
 </template>
 
@@ -62,7 +78,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .login {
   width: 400px;
   height: 400px;

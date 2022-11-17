@@ -171,7 +171,7 @@ import {profile} from '../api'
   }
   </script>
   
-  <style>
+  <style scoped>
   .home-title {
     padding: 10px;
     font-size: 18px;
