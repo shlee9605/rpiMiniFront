@@ -27,7 +27,7 @@
   }
   </script>
   
-  <style>
+  <style scoped>
   .logoimg {
     align-items: center;
     display: flex;
