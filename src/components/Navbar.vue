@@ -20,14 +20,14 @@ export default {
     }
   },
 
-  computed: {
+  computed: {   //check token data
     isAuth() {
       return !!localStorage.getItem('token')
     }
   },
 
-  methods: {
-    logout() {
+  methods: {      //log out if token is valued, 
+    logout() {    //else, logout button will be chaned into login button
       delete localStorage.token
       delete localStorage.user
       setAuthInHeader(null)

@@ -22,7 +22,7 @@
                   v-for="(item, i) in rank"
                   :key="i"
                 >
-                  <td>{{ item.key }}</td>
+                  <td>{{ i+1 }}</td>
                   <td>{{ item.userid }}</td>
                   <td>{{ item.winlose }}</td>
                 </tr>
@@ -98,14 +98,14 @@ import {profile} from '../api'
     data() {
       return {
         loading: false,
-        rank: [],
+        rank: [],     //////////////////
         pic1:'',
         pic2:'',
-        pic3:'',
+        pic3:'',      //key table value
         pic4:'',
+        userid: '',   
+        gamekey:'',   ///////////////////
         error: '',
-        userid: '',
-        gamekey:'',
         url:'http://192.168.0.54:8080',
         // url:'http://192.168.0.63:8080'
       }
@@ -116,22 +116,17 @@ import {profile} from '../api'
       },
     },
     created() {
-      this.fetchData(),
+      this.fetchData(),   //read API goes on when created
       this.fetchPic(),
       this.rPath = this.$route.query.rPath || '/'
-      // this.updatekey()
     },
-    updated() {
-      // this.$refs.boardItem.forEach(el => {
-      //   el.style.backgroundColor = el.dataset.bgcolor
-      // })
-    },
+
     methods: {
-      fetchData() {
+      fetchData() {     //read ranking data
         this.loading = true
         profile.fetchall()
-          .then(data => {
-            for(let i=0;i<10;i++){
+          .then(data => {     //only show the latest 10 data
+            for(let i=data.keys.length-1;i>data.keys.length-10;i--){
               if(data.keys[i]){
                 this.rank.push(data.keys[i])
               }
@@ -142,9 +137,9 @@ import {profile} from '../api'
           })
       },
 
-      fetchPic(){
+      fetchPic(){   //show picture
         this.loading = true
-        profile.fetch()
+        profile.fetch()     //only show the latest "USER's" game's 4 picture
           .then(data => {
             this.pic1=data.keys[data.keys.length-1].photoURL1
             this.pic2=data.keys[data.keys.length-1].photoURL2
@@ -156,12 +151,12 @@ import {profile} from '../api'
           })
       },
 
-      updatekey(){
+      updatekey(){    //update userid into key table
         this.userid=localStorage.getItem("user")
         profile.updateid(this.gamekey, this.userid)
           .then(
             console.log(this.gamekey),
-            this.$router.go()
+            this.$router.go()   //reload after update
           )
           .catch( err => {
             this.error = err.data.error

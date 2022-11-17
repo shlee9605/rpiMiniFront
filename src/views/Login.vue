@@ -46,28 +46,28 @@ import {auth, setAuthInHeader} from '../api'
 export default {
   data() {
     return {
-      userid: '',
-      password: '',
+      userid: '',   //userid
+      password: '', //password
       error: '',
-      rPath: ''
+      rPath: ''     //redirect
     }
   },
   computed: {
-    invalidForm() {
+    invalidForm() {     //check login form
       return !this.userid || !this.password
     }
   },
-  created() {
+  created() {   //create redirect path
     this.rPath = this.$route.query.rPath || '/'
   },
   methods: {
-    onSubmit() {
+    onSubmit() {    //Login API
       auth.login(this.userid, this.password)
         .then(data => {
-          localStorage.setItem('token', data.token)
-          localStorage.setItem('user', this.userid)
+          localStorage.setItem('token', data.token)     //save JWT token to header in localStorage at login state
+          localStorage.setItem('user', this.userid)     //save userid in localStorage at login state
           setAuthInHeader(data.token)
-          this.$router.push(this.rPath)
+          this.$router.push(this.rPath)           //redirect to login or homepage
         })
         .catch(err => {
           this.error = err.data.error
@@ -106,10 +106,7 @@ div {
   grid-template-columns: 50% 50%;
   
 }
-/* .lineContainer {
-  
-  border: solid 1px black;
-} */
+
 .error {
   color: #f00;
 }
