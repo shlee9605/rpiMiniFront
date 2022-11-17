@@ -44,6 +44,6 @@ export const auth = {
   },
   
   signup(userid, password){
-    return request('post', '/join', {userid, password})
+    return request('post', '/auth/join', {userid, password})
   }
 }
