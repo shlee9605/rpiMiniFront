@@ -34,7 +34,6 @@
 
     <div class = "B2">
       <div class = "C1">
-        <span>키 입력 영역</span>
           <form @submit.prevent="updatekey" class = headText>
             <div>
               <label for="KEY"> KEY :  </label>
@@ -107,7 +106,8 @@ import {profile} from '../api'
         error: '',
         userid: '',
         gamekey:'',
-        url:'http://localhost:8080',
+        // url:'http://localhost:8080',
+        url:'http://192.168.0.63:8080'
       }
     },
     computed: {

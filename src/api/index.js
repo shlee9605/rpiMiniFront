@@ -1,7 +1,8 @@
 import axios from 'axios'
 import router from '../routes'
 
-const DOMAIN = 'http://localhost:8080';
+// const DOMAIN = 'http://localhost:8080';
+const DOMAIN = 'http://192.168.0.63:8080';
 const UNAUTHORIZED = 401
 const onUnauthorized = () => {
   router.push(`/login?rPath=${encodeURIComponent(location.pathname)}`)
@@ -44,6 +45,6 @@ export const auth = {
   },
   
   signup(userid, password){
-    return request('post', '/join', {userid, password})
+    return request('post', '/auth/join', {userid, password})
   }
 }

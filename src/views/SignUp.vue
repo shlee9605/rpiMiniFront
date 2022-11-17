@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     onSubmit(){
-      auth.login(this.userid, thispassword)
+      auth.signup(this.userid, thispassword)
         .then(data => {
           console.log(data)
           this.$router.push('/login')
