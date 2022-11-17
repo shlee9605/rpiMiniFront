@@ -25,7 +25,7 @@
  <script>
  export default {
    methods: {
-     goSignIn() {
+     goSignIn() {   //redirecting button
      this.$router.push('/')
    },
    }

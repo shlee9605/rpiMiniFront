@@ -55,29 +55,27 @@ export default {
     return {
       userid: '',
       password: '',
-      // error: '',
       rPath: '',
     }
   },
 
-  computed: {
+  computed: {   //invalid id/pw
       invalidForm() {
           return !this.userid || !this.password
       }
   },
-	created() {
+	created() {   //create redirect router path
     this.rPath = this.$route.query.rPath || '/'
   },
   methods: {
-    onSubmit(){
+    onSubmit(){   //signup
       auth.signup(this.userid, this.password)
         .then(data => {
           console.log(data)
-          this.$router.push('/login')
+          this.$router.push('/login')   //redirect to login
         })
         .catch(err=>{
           console.log(err.data.error)
-          // this.error=err.data.error
         })
     } 
   }

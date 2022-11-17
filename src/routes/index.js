@@ -8,13 +8,13 @@ import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
-const requireAuth = (to, from, next) => {
+const requireAuth = (to, from, next) => {   //router guard
   const isAuth = localStorage.getItem('token')
   const loginPath = `/login?rPath=${encodeURIComponent(to.path)}`
   isAuth ? next() : next(loginPath)
 }
 
-const OOCE = (to, from , next) => { //only one can enter
+const OOCE = (to, from , next) => {         //router guard for login, signup
   const isAuth = localStorage.getItem('token')
   if(isAuth){
     next('/')
@@ -22,30 +22,28 @@ const OOCE = (to, from , next) => { //only one can enter
   else{
     next()
   }
-  // const homePath = `?rPath=${encodeURIComponent(to.path)}`
-  // isAuth ? next() : next(homePath)
 }
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
     { 
-      path: '/', 
+      path: '/',        //home(profile) page
       component: Home,
       beforeEnter: requireAuth
     },
     { 
-      path: '/login', 
+      path: '/login',   //login page
       component: Login,
       beforeEnter: OOCE
     },
     { 
-      path: '/signup', 
+      path: '/signup',  //join page
       component: SignUp,
       beforeEnter: OOCE,
     },
     { 
-      path: '*', 
+      path: '*',        //404 page
       component: NotFound 
     }
   ]
