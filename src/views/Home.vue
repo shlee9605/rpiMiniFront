@@ -106,7 +106,7 @@ import {profile} from '../api'
         error: '',
         userid: '',
         gamekey:'',
-        url:'http://localhost:8080',
+        url:'http://192.168.0.54:8080',
         // url:'http://192.168.0.63:8080'
       }
     },

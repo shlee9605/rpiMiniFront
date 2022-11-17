@@ -33,7 +33,6 @@
       </div>
 
       <p class="error" v-if="error">{{error}}</p>
-    <!-- </v-col> -->
 
     <div>
     </div>
@@ -81,22 +80,36 @@ export default {
 <style scoped>
 .login {
   width: 400px;
-  height: 400px;
-  display: grid;
-  grid-row: 20% 80%;
-  justify-content: center;
+  height: 90%;
+  margin: auto;
+  margin-top: 30px;
   border: 3px solid rgb(115, 212, 136);
-  background-color: beige;
+  background-color: rgba(220, 236, 224, 0.548);
   border-radius: 10px;
-  
+  display: grid;
+  flex-wrap: wrap;
 }
+
 div {
   justify-content: center;
 }
-.innderDiv{
-  justify-content: center;
-  margin-top: 20px;
+.innerDiv{
+  width: 100%;
+  height:100%;
+  margin-top: 10px;
 }
+.innerDiv2{
+  width: 100%;
+  height:100%;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  
+}
+/* .lineContainer {
+  
+  border: solid 1px black;
+} */
 .error {
   color: #f00;
 }

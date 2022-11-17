@@ -1,7 +1,7 @@
 import axios from 'axios'
 import router from '../routes'
 
-const DOMAIN = 'http://localhost:8080';
+// const DOMAIN = 'http://192.168.0.54:8080';
 // const DOMAIN = 'http://192.168.0.63:8080';
 const UNAUTHORIZED = 401
 const onUnauthorized = () => {
@@ -11,7 +11,8 @@ const onUnauthorized = () => {
 const request = (method, url, data) => {
   return axios({
     method, 
-    url: DOMAIN + url, 
+    url: 'http://192.168.0.54:8080' + url, 
+    // url: 'http://192.168.0.63:8080' + url, 
     data
   }).then(result => result.data)
     .catch(result => {

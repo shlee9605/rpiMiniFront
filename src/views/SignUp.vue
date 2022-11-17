@@ -9,7 +9,7 @@
     <form @submit.prevent="handleSubmit(onSubmit)">
       <div class = "innerDiv1">
       <ValidationProvider
-        name="아이디" rules="required|userid" v-slot="{errors}">
+        name="아이디" rules="required" v-slot="{errors}">
           <v-text-field 
             v-model="userid"
             :counter="20"
