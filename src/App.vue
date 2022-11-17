@@ -4,8 +4,6 @@
 		<v-main class="mainBackground">
 			<router-view></router-view>
 		</v-main>
-		<div v-if="isState"></div>
-		<div v-else></div>
 	</v-app>
 </template>
 
@@ -17,18 +15,13 @@ export default {
   components: { Navbar },
   data () {
     return {
-		state: ''
     }
   },
   created(){
-	this.state=localStorage.getItem('token')
-	console.log(this.state)
+
   },
   computed:{
-	isState(){
-		this.state=localStorage.getItem('token')
-		console.log(this.state)
-	}
+
   }
 }
 </script>
